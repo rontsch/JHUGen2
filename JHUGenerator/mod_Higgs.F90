@@ -1387,11 +1387,11 @@
       res =   2d0*s12*(kappa_tilde**2 + kappa**2) - 8d0*masstau**2*kappa**2
 
       res=res*masstau**2/vev**2                    
-  
+
    END SUBROUTINE
 
 
-   SUBROUTINE EvalAmp_H_TT_dk(pin,res,masstau)
+   SUBROUTINE EvalAmp_H_TT_dk(pin,ressq,masstau)
 
 ! Decay amplitude H --> tau^-(-->l^-(p1)+nubar(p2)+nutau(p3))+tau^+(-->nu(p4)+l^+(p5)+nutaubar(p6))
 ! or H --> tbar^-(-->l^-(p1)+nubar(p2)+bbar(p3))+top(-->nu(p4)+l^+(p5)+b(p6))
@@ -1404,16 +1404,16 @@
       use ModMisc
       use ModParameters
       implicit none
-      complex(dp), intent(out) ::  res
+      real(dp), intent(out) ::  ressq
       real(dp), intent(in) :: pin(1:4,1:6),masstau
       integer              :: j
-      real(dp)             :: p(1:4,1:6),s12,s45,s123,s456,mw,KL,KR,s(6,6)
-      complex(dp)          :: za(6,6),zb(6,6)
+      real(dp)             :: p(1:6,1:4),s12,s45,s123,s456,mw,KL,KR,s(6,6)
+      complex(dp)          :: za(6,6),zb(6,6),res
 
-      p=pin
+
       do j=1,6
-          call convert_to_MCFM(pin(1:4,j),p(1:4,j))  
-      enddo	  
+          call convert_to_MCFM(pin(1:4,j),p(j,1:4))  
+      enddo
       call spinoru(6,p,za,zb,s)
   
       s12=s(1,2)
@@ -1427,10 +1427,15 @@
 
       res =  + KR * ( za(1,3)*za(1,4)*zb(1,2)*zb(5,6)- za(1,3)*za(3,4)*zb(2,3)*zb(5,6)) &
              + KL * (- za(1,3)*za(4,5)*zb(2,5)*zb(5,6)- za(1,3)*za(4,6)*zb(2,6)*zb(5,6))
+      
+
 
 ! overall factors and propagators
      res=res/(s123-masstau**2)/(s456-masstau**2)/(s12-mw**2+ci*mw*Ga_W)/(s45-mw**2+ci*mw*Ga_W)
-     res=res*16d0*ci*masstau*gwsq**2
+     res=res*ci*masstau*gwsq**2
+
+
+     ressq=abs(res)**2
 
 
       RETURN
@@ -1438,7 +1443,6 @@
 
 
 ! ---------------------------------------------------------------------------
-
 
 
 
