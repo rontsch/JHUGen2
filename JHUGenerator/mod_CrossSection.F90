@@ -1812,31 +1812,32 @@ END FUNCTION
       do NHisto=1,NumHistograms
 !          call intoHisto(NHisto,NBin(NHisto),EvalWeighted_tautau*VgsWgt)
       enddo
+
 ! MadGraph checks
-      if (TauDecays .eq. 0) then
-         print *, "MG check for tau undecayed"
-         pMG(1:4,1)=pHiggs(1:4)*100d0
-         pMG(1:4,2)=Mom(1:4,3)*100d0
-         pMG(1:4,3)=Mom(1:4,4)*100d0
-         call coupsm(0)
-         call SHtautau(pMG(1:4,1:3),MadGraph_Tree(1))
-         print *, "My tree H --> tau+ tau-",LO_Res_UnPol*(vev*100d0)*2/ 250.618249228543d0**2
-         print *, "MadGraph tree H -->  tau+ tau-",MadGraph_Tree(1)
-         print *, "MG/ME ratio",MadGraph_tree/(LO_Res_UnPol * (vev*100d0)**2 / 250.618249228543d0**2 * 100d0**2)
-         pause
-      elseif (TauDecays .eq. 1) then
-         print *, "MG check for decaying taus" 
-         pMG(1:4,1)=pHiggs(1:4)*100d0
-         do i=2,7
-            pMG(1:4,i)=MomTauDK(1:4,i-1)*100d0
-         enddo
-         call coupsm(0)
-         call SHtautaudk(pMG(1:4,1:7),MadGraph_Tree(1))
-         print *, "My tree H --> tau+ tau- --> e- nubar_e nutau nu_mu mu+ nubar_tau ",LO_Res_UnPol*(vev*100d0)**2/ 250.618249228543d0**2/gwsq**4*0.6414935883355840d0**8 / 100d0**6
-         print *, "MadGraph tree H -->  tau+ tau- --> e- nubar_e nutau nu_mu mu+ nubar_tau",MadGraph_Tree(1)
-         print *, "MG/ME ratio",MadGraph_tree/(LO_Res_UnPol * (vev*100d0)**2 / 250.618249228543d0**2 / gwsq**4 * 0.6414935883355840d0**8/ 100d0**6)
-         pause
-      endif
+!      if (TauDecays .eq. 0) then
+!         print *, "MG check for tau undecayed"
+!         pMG(1:4,1)=pHiggs(1:4)*100d0
+!         pMG(1:4,2)=Mom(1:4,3)*100d0
+!         pMG(1:4,3)=Mom(1:4,4)*100d0
+!         call coupsm(0)
+!         call SHtautau(pMG(1:4,1:3),MadGraph_Tree(1))
+!         print *, "My tree H --> tau+ tau-",LO_Res_UnPol*(vev*100d0)*2/ 250.618249228543d0**2
+!         print *, "MadGraph tree H -->  tau+ tau-",MadGraph_Tree(1)
+!         print *, "MG/ME ratio",MadGraph_tree/(LO_Res_UnPol * (vev*100d0)**2 / 250.618249228543d0**2 * 100d0**2)
+!         pause
+!      elseif (TauDecays .eq. 1) then
+!         print *, "MG check for decaying taus" 
+!         pMG(1:4,1)=pHiggs(1:4)*100d0
+!         do i=2,7
+!            pMG(1:4,i)=MomTauDK(1:4,i-1)*100d0
+!         enddo
+!         call coupsm(0)
+!         call SHtautaudk(pMG(1:4,1:7),MadGraph_Tree(1))
+!         print *, "My tree H --> tau+ tau- --> e- nubar_e nutau nu_mu mu+ nubar_tau ",LO_Res_UnPol*(vev*100d0)**2/ 250.618249228543d0**2/gwsq**4*0.6414935883355840d0**8 / 100d0**6
+!         print *, "MadGraph tree H -->  tau+ tau- --> e- nubar_e nutau nu_mu mu+ nubar_tau",MadGraph_Tree(1)
+!         print *, "MG/ME ratio",MadGraph_tree/(LO_Res_UnPol * (vev*100d0)**2 / 250.618249228543d0**2 / gwsq**4 * 0.6414935883355840d0**8/ 100d0**6)
+!         pause
+!      endif
 
       
   
