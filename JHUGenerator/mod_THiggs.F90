@@ -372,8 +372,8 @@ END SUBROUTINE
         implicit none
         integer    :: p1,p2,p3,e3,k3,e4,p5,k4
         complex(8) :: za(:,:),zb(:,:),mdecay(1:2)
-        real(8)    :: s(:,:),KL,KR
-        complex(8) :: amp(2),ampw(2),ampt(2)
+        real(8)    :: s(:,:)
+        complex(8) :: amp(2),ampw(2),ampt(2),KL,KR
         real(8)    :: s24,s34,s15,mt,mw
 
         s24=s(p2,k4)+s(p2,e4)+s(e4,k4)
@@ -423,8 +423,8 @@ END SUBROUTINE
         implicit none
         integer    :: p1,p2,p3,e3,k3,e4,p5,k4
         complex(8) :: za(:,:),zb(:,:),mdecay(1:2)
-        real(8)    :: s(:,:),KL,KR
-        complex(8) :: amp(2),ampw(2),ampt(2)
+        real(8)    :: s(:,:)
+        complex(8) :: amp(2),ampw(2),ampt(2),KL,KR
         real(8)    :: s24,s34,s15,mt,mw
     
         s24=s(p2,k4)+s(p2,e4)+s(e4,k4)
@@ -471,8 +471,8 @@ END SUBROUTINE
         implicit none
         integer    :: p1,p2,p3,e3,k3,e4,p5,k4
         complex(8) :: za(:,:),zb(:,:),mdecay(1:2)
-        real(8)    :: s(:,:),KL,KR
-        complex(8) :: amp(2),ampw(2),ampt(2)
+        real(8)    :: s(:,:)
+        complex(8) :: amp(2),ampw(2),ampt(2),KL,KR
         real(8)    :: s12,s34,s45,mt,mw
     
         s45=s(k4,p5)+s(e4,p5)+s(e4,k4)
@@ -522,8 +522,8 @@ END SUBROUTINE
         implicit none
         integer    :: p1,p2,p3,e3,k3,e4,p5,k4
         complex(8) :: za(:,:),zb(:,:),mdecay(1:2)
-        real(8)    :: s(:,:),KL,KR
-        complex(8) :: amp(2),ampw(2),ampt(2)
+        real(8)    :: s(:,:)
+        complex(8) :: amp(2),ampw(2),ampt(2),KL,KR
         real(8)    :: s45,s34,s12,mt,mw
     
         s45=s(k4,p5)+s(e4,p5)+s(e4,k4)
